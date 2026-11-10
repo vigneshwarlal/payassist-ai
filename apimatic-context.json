@@ -1,0 +1,58 @@
+{
+  "$schema": "https://apimatic.io/schemas/context-plugin/v1.json",
+  "metadata": {
+    "name": "PayAssist AI APIMatic Context Plugin",
+    "description": "Structured PayPal REST API Context & OpenAPI Contract for Autonomous Commerce Agents",
+    "version": "2.0.0",
+    "provider": "PayPal REST API v2",
+    "targetEngine": "Google Gemini 2.0 Flash"
+  },
+  "apiSpecification": {
+    "format": "OpenAPI 3.0",
+    "sourceUrl": "https://api-m.sandbox.paypal.com/v2/checkout/orders",
+    "endpoints": [
+      {
+        "path": "/v2/checkout/orders",
+        "method": "POST",
+        "operationId": "createOrder",
+        "contextTag": "OrdersAPI",
+        "agentRole": "BuyerCheckoutOrchestrator"
+      },
+      {
+        "path": "/v2/checkout/orders/{id}/capture",
+        "method": "POST",
+        "operationId": "captureOrder",
+        "contextTag": "OrdersAPI",
+        "agentRole": "SettlementEngine"
+      },
+      {
+        "path": "/v2/invoicing/invoices",
+        "method": "POST",
+        "operationId": "createDraftInvoice",
+        "contextTag": "InvoicingAPI",
+        "agentRole": "B2BInvoicingCopilot"
+      },
+      {
+        "path": "/v2/invoicing/invoices/{invoice_id}/send",
+        "method": "POST",
+        "operationId": "sendInvoice",
+        "contextTag": "InvoicingAPI",
+        "agentRole": "AutomatedDunningAgent"
+      },
+      {
+        "path": "/v1/payments/payouts",
+        "method": "POST",
+        "operationId": "createBatchPayout",
+        "contextTag": "PayoutsAPI",
+        "agentRole": "VendorDisbursementAgent"
+      }
+    ]
+  },
+  "agentToolMappings": {
+    "create_invoice": "InvoicingAPI.createDraftInvoice",
+    "send_invoice": "InvoicingAPI.sendInvoice",
+    "create_payment_link": "OrdersAPI.createOrder",
+    "send_payout": "PayoutsAPI.createBatchPayout",
+    "inspect_risk": "SentinelAI.evaluateTransactionRisk"
+  }
+}

@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paypal-blue: #003087;
+    --paypal-light: #0070e0;
+    --paypal-azure: #009cde;
+    --paypal-gold: #ffc439;
+    --paypal-dark: #001c64;
+    --brand-navy: #0b132b;
+  }
+
+  * {
+    border-color: #e2e8f0;
+  }
+
+  body {
+    @apply antialiased text-slate-800 bg-[#f8fafc] selection:bg-blue-100 selection:text-blue-900;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.011em;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Chat container smooth scroll */
+.chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+/* Ultra-Clean Modern Card & Surface Styling */
+.fintech-card {
+  @apply bg-white rounded-2xl border border-slate-200/80 shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_6px_16px_-4px_rgba(15,23,42,0.04)] transition-all duration-200;
+}
+
+.fintech-card:hover {
+  @apply border-slate-300/80 shadow-[0_4px_12px_0_rgba(15,23,42,0.05),0_12px_28px_-6px_rgba(15,23,42,0.06)];
+}
+
+.fintech-card-subtle {
+  @apply bg-white rounded-xl border border-slate-200/60 shadow-sm transition-all duration-150;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-dark {
+  background: rgba(11, 19, 43, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* AG Grid Modern Enterprise Styling Overrides */
+.ag-theme-alpine {
+  --ag-font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --ag-font-size: 13px;
+  --ag-grid-size: 6px;
+  --ag-header-height: 44px;
+  --ag-row-height: 48px;
+  --ag-header-background-color: #f8fafc;
+  --ag-header-foreground-color: #475569;
+  --ag-header-cell-hover-background-color: #f1f5f9;
+  --ag-row-hover-color: #f8fafc;
+  --ag-selected-row-background-color: #eff6ff;
+  --ag-range-selection-border-color: #0070e0;
+  --ag-range-selection-background-color: rgba(0, 112, 224, 0.08);
+  --ag-border-color: #e2e8f0;
+  --ag-secondary-border-color: #f1f5f9;
+  --ag-cell-horizontal-border: solid #f1f5f9;
+  --ag-checkbox-checked-color: #003087;
+  --ag-alpine-active-color: #0070e0;
+  --ag-border-radius: 12px;
+}
+
+.ag-theme-alpine .ag-root-wrapper {
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03);
+}
+
+.ag-theme-alpine .ag-header-cell-label {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #334155;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.ag-theme-alpine .ag-header-icon {
+  color: #0070e0;
+}
+
+.ag-theme-alpine .ag-paging-panel {
+  border-top: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #475569;
+  font-size: 12.5px;
+  padding: 8px 16px;
+}
+
+.ag-theme-alpine .ag-paging-button {
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-radius: 6px;
+}
+
+.ag-theme-alpine .ag-paging-button:hover {
+  background-color: #eff6ff;
+  color: #003087;
+}
+
+.ag-theme-alpine .ag-row {
+  transition: background-color 0.15s ease;
+}
+
+/* Animations */
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radarSweep 4s linear infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
